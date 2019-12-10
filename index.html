@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap&subset=latin-ext" rel="stylesheet">
+    <title>Platzi</title>
+    <style>
+     body{
+        font-family: 'Lato', sans-serif;
+        margin: 0;
+     }
+    .hero { /* .todo esta aca adentro */
+        background:lightseagreen;
+        color: ivory;
+        padding: 32px 15px;
+        display: grid;
+        grid-template-columns: minmax(auto, 1024px);
+        justify-content: center;
+    }
+    .hero-container{
+        display: grid;  /* esto siempre va para formar el grid */
+        /* aca abajo va el badge con 70px, el medio va a ser dinamico osea que 1fr y el formularo 320px */
+        grid-template-columns: 70px 1fr 320px;  /* colocamos estos valores porque es un grid de 3 filasx3columnas  */
+        grid-template-areas: "badge title form"      /* primera fila */
+                             ". description form"  /* esta segunda fila tenemos espacio en blanco que es el punto (.) y despues la descripcion con el form */
+                             ". countdown form"; /* la tercer fila tenemos espacio en blanco al inicio que lo colocamos como un punto, el cowntdown y el form */
+                             grid-gap: 12px;
+    }
+    /* designamos una por una las areas aca abajo */
+    .badge {
+        grid-area: badge; /* con esta propiedad designamos el area */ 
+    }
+    .badge img {
+        max-width: 75px;
+    }
+    .title{
+        grid-area: title;
+        font-size: 36px;
+        font-weight: normal;
+        margin: 0;
+        display: flex;
+        align-items: center;
+    }
+    .form{
+        grid-area: form;
+        text-align: center;
+        background: rgba(255, 255, 255, .9);
+        padding: 1.5em;
+        border-radius: 10px;
+    }
+    .form input{
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #dbdbe2;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+    .form p {
+        font-size: 20px;
+        color: #3a3b3f;
+        margin-bottom: 1em;
+        
+    }
+    .form button{
+        background: #98ca3f;
+        color: floralwhite;
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        border-bottom: 5px solid #6d932b;
+        display: inline-block;
+    }
+    .countdown{
+    grid-area: countdown;
+    }
+    .countdown p {
+        font-size: 20px;
+        text-align:  center;
+        font-weight: 300;
+     }
+     .countdown span{
+         font-size: 33px;
+     }
+     .countdown span:after {
+         content: ":";
+         display: inline-block;
+         margin: 0 5px;
+     }
+     .countdown span:last-child:after { /* para quitar los dos puntos finales de el ultimo span */
+         display: none;
+     }
+     p { margin: 0;
+     }
+     .description {
+         grid-area: description;
+     }
+     @media screen and (max-width: 768px) { /* mediaqueris para responsive */
+         .hero-container {
+            grid-template-columns: 70px 1fr; /* dejamos solo dos columnas para este tamaño de pantalla */
+            grid-template-areas: "badge title"      /* primera fila */
+                                 "description description"   /* quitamos el punto y le decimos que ocupe dos espacios */
+                                 "form form" /* dos espacios */
+                                 "countdown countdown"; /* dos espacios */
+    }
+     }
+    
+  </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-container">
+                <div class="badge">
+                        <img src="logo1.png" alt="">
+                </div>
+                <h1 class="title">React.js Curse</h1>
+                <div class="description">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                       when an unknown printer took a galley of type and scrambled it to make a type 
+                       specimen book. It has survived not only five centuries, but also the leap into 
+                       electronic typesetting, remaining essentially unchanged.
+                    </p>
+                </div>
+                <form action="" class="form">
+                    <p>Sign Up</p>
+                    <input type="text" placeholder="Name">
+                    <input type="email" placeholder="Email">
+                    <button class="submit">Start Now</button>
+                </form>
+                <div class="countdown">
+                    <p>Launching:</p>
+                    <p>
+                        <span>01d</span>
+                        <span>03h</span>
+                        <span>09m</span>
+                        <span>05s</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+</body>
+</html>
